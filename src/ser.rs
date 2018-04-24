@@ -242,7 +242,7 @@ impl Serializer for MapKeySerializer {
 
     fn serialize_newtype_struct<T: ? Sized>(self, _name: &'static str, _value: &T) -> Result<Self::Ok, Self::Error> where
         T: Serialize {
-        Err(Error::KeyMustBeAString)
+        _value.serialize(self)
     }
 
     fn serialize_newtype_variant<T: ? Sized>(self, _name: &'static str, _variant_index: u32, _variant: &'static str, _value: &T) -> Result<Self::Ok, Self::Error> where
